@@ -1,0 +1,169 @@
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+.formulario {
+  align-content: end;
+  text-align: right;
+}
+.formulario2 {
+    height:auto;
+  align-content: end;
+  text-align: right;
+}
+.button {
+  /*background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;*/
+}
+
+.tooltip {
+  transition: opacity 0.3s;
+  visibility: hidden;
+  width: auto;
+  height: 40px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: relative;
+  z-index: 1;
+  bottom: -5px;
+  left: 50px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.container:hover .tooltip {
+  transition: opacity 0.3s;
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+
+
+
+  .formulario2 input {
+    text-align: right;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    border: none;
+  }
+  select{
+      margin:10px;
+      border:none;
+      background:#FAFAFA;
+      font-size:15px;
+      align-content:end;
+      text-align:right;
+      width:200px;
+      border-radius:5px;
+      }
+  
+  .formulario input {
+    text-align: right;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    border: none;
+  }
+
+.form-group.text-right {
+  text-align: right;
+}
+
+.btnAgregar {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.icono-eliminar {
+  transform-origin: center;
+  transition: 1s;
+  width: 10px;
+  height: 10px;
+  will-change: transform;
+}
+
+  .icono-eliminar:hover {
+    will-change: transform;
+    transition: 0.3s;
+    background-color:none;
+    width: 20px;
+    height: 30px;
+    color: red;
+  }
+
+
+.icono-editar, .icono-imprimir {
+  transform-origin: center;
+  transition: 1s;
+  width: 10px;
+  height: 10px;
+  will-change: transform;
+}
+
+  .icono-editar:hover, .icono-imprimir:hover {
+    will-change: transform;
+    transition: 0.3s;
+    width: 20px;
+    height: 30px;
+    background-color: none;
+    color: lawngreen;
+  }
+ 
+
+ 
+.custom-scrollbar {
+     
+    
+   
+}
+
+  /* Ocultar la barra de desplazamiento en WebKit */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 0.5em;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+.columna-Fecha {
+    width:45px !important;
+  font-size: 8px; /* Ajusta el tamaño de la fuente según tus necesidades */
+ 
+}
+.columna-id {
+    
+  font-size: 12px;
+  width: 30px !important;
+   
+  margin:0px !important;
+  gap:0px !important;
+  margin: 0px, 0px;
+  max-width:25px;
+
+}
+.columna {
+    max-width:120px;
+    width:100px;
+}
+
+.tabla {
+   
+  border-collapse: collapse;
+  border-spacing: 0!important; /* Establece el espacio entre las celdas a 0 */
+ 
+}
+

@@ -1,0 +1,88 @@
+<h4>Agregar Vendedor</h4>
+<!--<button (click)="showNotification('AA')">Mostrar notificación</button>-->
+
+
+<div style="height:100%;">
+  <div class="formulario" style="display:flex!important; flex-wrap:wrap!important;width:300px; height:auto;  ">
+    <form (submit)="agregarVendedor()" class="form-group" style="display: flex; flex-wrap: wrap; width: 300px; height:auto; justify-content: flex-end; align-items: center; margin-right: 10px;   ">
+
+      <div>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" [(ngModel)]="vendedor.nombre" required>
+      </div>
+
+      <div>
+        <label for="direccion">Dirección:</label>
+        <input type="text" id="direccion" name="direccion" [(ngModel)]="vendedor.Direccion" required>
+      </div>
+
+      <div>
+        <label for="direccion"> Porcentaje Flete: </label>
+        <input type="number" name="PorcentajeFlete" [(ngModel)]="vendedor.PorcentajeFlete" required>
+      </div>
+
+      <div>
+        <label for="telefono">Teléfono:</label>
+        <input type="text" id="telefono" name="telefono" [(ngModel)]="vendedor.Telefono">
+      </div>
+
+
+    </form>
+    <button type="submit" class="btn btn-primary  " style="width:200px; height:50px; margin:0 auto; margin-top:10px;" (click)="agregarVendedor()">Agregar Vendedor</button>
+  </div>
+
+  <div style="width:100% !important; height:auto; margin-left:20px; position:relative; top:-226px; left:300px;   margin-top:10px;   " *ngIf="this.existenVendedores">
+
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource">
+
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> Id </th>
+          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef> Nombre </th>
+          <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="direccion">
+          <th mat-header-cell *matHeaderCellDef> Direccion </th>
+          <td mat-cell *matCellDef="let element"> {{element.Direccion}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Porcentaje Flete">
+          <th mat-header-cell *matHeaderCellDef> Porcentaje Flete </th>
+          <td mat-cell *matCellDef="let element"> {{element.PorcentajeFlete}} </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="Editar">
+          <th mat-header-cell *matHeaderCellDef> Editar </th>
+          <td mat-cell *matCellDef="let element">
+
+
+            <i class="fas fa-pencil-alt icono-editar" (click)="editarVendedor(element)" style="position:relative!important; left:15px;"></i>
+
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Eliminar">
+          <th mat-header-cell *matHeaderCellDef> Eliminar</th>
+          <td mat-cell *matCellDef="let element">
+
+            <i class="fas fa-trash-alt icono-eliminar" (click)="eliminarVendedor(element.id)" style="position:relative!important; left:20px;"></i>
+
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <mat-paginator #paginator
+                     [pageSizeOptions]="[5, 10, 20]"
+                     showFirstLastButtons>
+      </mat-paginator>
+    </div>
+  </div>
+</div>

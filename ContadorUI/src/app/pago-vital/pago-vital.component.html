@@ -1,0 +1,183 @@
+<app-loading *ngIf="this.loading"></app-loading>
+<h3>Pago Vital</h3>
+<br />
+<h2>Filtrar balance</h2>
+<!--FORMULARIO-->
+<div style="display:flex;">
+  <div class="formulario containerNotaDeCredito" style="margin-right:40px;">
+    <br />
+    <form [formGroup]="PagoVitalForm">
+
+      <mat-form-field style=" min-height:90px;  width:100%;">
+        <input matInput placeholder="Numero de guia" formControlName="numeroGuia" />
+      </mat-form-field>
+
+      <br />
+      <mat-form-field style="height:90px; width:100%;">
+        <label>Cliente:</label>
+        <select matNativeControl formControlName="numeroCliente">
+          <option *ngFor="let cliente of clientes" [value]="cliente.id">
+            {{ cliente.NumeroDeCliente }} - {{ cliente.nombre }}
+          </option>
+        </select>
+      </mat-form-field>
+      <br />
+
+      <mat-form-field style=" min-height:90px;  width:100%;">
+        <input matInput placeholder="Id camionero" formControlName="idCamionero" />
+      </mat-form-field>
+
+      <br />
+      <button mat-button (click)="Filtrar()">Filtrar</button>
+      <button mat-button (click)="limpiarFormulario()">Limpiar Formulario</button>
+
+
+    </form>
+
+  </div>
+
+  <div style="display:flex;   flex-grow:1; height:400px;">
+
+    <div class="mat-elevation-z8" style="margin-bottom: 30px;">
+      <h2 style="text-align:center;">Facturas entregadas</h2>
+      <mat-table [dataSource]="dataSourceEntregadas">
+        <!-- Columnas -->
+        <ng-container matColumnDef="id" class="columna">
+          <th mat-header-cell *matHeaderCellDef class="columna">Id Factura</th>
+          <td mat-cell *matCellDef="let element" class="columna"> {{element.id}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Guia" class="columna">
+          <th mat-header-cell *matHeaderCellDef class="columna">Nro Guia</th>
+          <td mat-cell *matCellDef="let element" class="columna"> {{element.cargaNumero}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Cliente" class="columna">
+          <th mat-header-cell *matHeaderCellDef class="columna">Cliente id</th>
+          <td mat-cell *matCellDef="let element" class="columna">  {{obtenerNumeroDeCliente(element.Cliente)}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Camionero" class="columna">
+          <th mat-header-cell *matHeaderCellDef class="columna">Camionero</th>
+          <td mat-cell *matCellDef="let element" class="columna"> {{element.Camionero}} </td>
+        </ng-container>
+
+
+
+        <ng-container matColumnDef="Fecha" class="columna" style="width:220px;">
+          <th mat-header-cell *matHeaderCellDef class="columna" style="width:220px;"> Fecha entrega </th>
+          <td mat-cell *matCellDef="let element" class="columna" style="width:220px;"> {{element.FechaEntrega}} </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="Monto" class="columna">
+          <th mat-header-cell *matHeaderCellDef class="columna"> Monto. </th>
+          <td mat-cell *matCellDef="let element" class="columna"> $ {{element.Monto}} </td>
+        </ng-container>
+
+        <!-- Asigna las columnas y las acciones a la tabla -->
+        <mat-header-row *matHeaderRowDef="displayedColumnsEntregadas"></mat-header-row>
+        <mat-row style="height:40px;" *matRowDef="let row; columns: displayedColumnsEntregadas"></mat-row>
+      </mat-table>
+
+      <mat-paginator #pag2
+                     [pageSizeOptions]="[5, 10, 20]"
+                     showFirstLastButtons>
+      </mat-paginator>
+      <br />
+
+      <br />
+      <div class="mat-elevation-z8">
+        <h2 style="text-align:center; margin-bottom:30px;">Notas de credito</h2>
+        <br />
+
+        <mat-table [dataSource]="dataSourceNotas" class="mat-elevation-z8">
+          <!-- Columnas -->
+          <ng-container matColumnDef="cliId" class="columna">
+            <th mat-header-cell *matHeaderCellDef>Cliente Id</th>
+            <td mat-cell *matCellDef="let element" style="width:100px;"> {{element.cliId}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="facId" class="columna" style="width:100px;">
+            <th mat-header-cell *matHeaderCellDef style="width:80px;">Fac Id</th>
+            <td mat-cell *matCellDef="let element" style="width:70px;"> {{element.idFactura}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="monto" style="width:100px;" class="columna">
+            <th mat-header-cell *matHeaderCellDef style="width:90px;">Monto</th>
+            <td mat-cell *matCellDef="let element" style="width:100px;"> ${{element.monto}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="desc" style="width:900px;" class="columna">
+            <th mat-header-cell *matHeaderCellDef style="width:900px;"> Descripcion</th>
+            <td mat-cell *matCellDef="let element" style="width:900px; overflow-x:hidden;"> {{element.descripcion}} </td>
+          </ng-container>
+
+
+
+          <!-- Asigna las columnas y las acciones a la tabla -->
+          <mat-header-row *matHeaderRowDef="displayedColumnsNotas"></mat-header-row>
+          <mat-row style="height:40px;" *matRowDef="let row; columns: displayedColumnsNotas"></mat-row>
+        </mat-table>
+
+
+
+      </div>
+
+      <div *ngIf="!this.calculado" >
+        <div style="display:flex; margin:0 auto; text-align:center; margin:30px;">
+          <label>Debe calcular para ver los resultados de la sumatoria</label>
+          <button class="btn-primary btn-sm btn" (click)="calcular()">Calcular</button>
+        </div>
+        </div>
+
+      <div style="margin-top:30px; text-align:center;" *ngIf="this.calculado">
+        <h1>Sumatoria</h1>
+
+
+        <h2>Total cobrado ${{balance.ganancias | number:'1.2-2'}}</h2>
+
+        <h2>Total notas de credito $ {{this.balance.totalNotasDeCredito | number:'1.2-2'}}</h2>
+
+        <h2>Sub total $ {{this.balance.subTotal | number:'1.2-2'}}</h2>
+        <hr>
+        <br />
+        <h2>Ganancias Admin</h2>
+        <h2> ${{this.admin.GananciaFletes | number:'1.2-2'}}</h2>
+
+        <hr />
+        <h2>Ganancias Camioneros</h2>
+        <div *ngFor="let cam of camioneros">
+          <div style="display:flex;">
+            <p>{{cam.Nombre}} - porcentaje {{cam.PorcentajeFlete}} % -  Ganancia fletes:${{cam.ganancia | number:'1.2-2'}}  </p>
+          </div>
+
+        </div>
+        <h2>Total ${{this.totalCamioneros | number:'1.2-2'}}</h2>
+        <hr>
+        <br />
+        <h2>Ganancias Vendedores</h2>
+        <div *ngFor="let ven of vendedores">
+          <div style="display:flex;">
+            <p>{{ven.nombre}} - porcentaje {{ven.PorcentajeFlete}} % -  Ganancia fletes:${{ven.ganancia| number:'1.2-2'}}  </p>
+          </div>
+
+        </div>
+        <h2>Total ${{this.totalVendedores | number:'1.2-2'}}</h2>
+        <hr />
+        <h2>Ganancias Camioneros</h2>
+        <h2>Enviar Vital</h2>
+        <br />
+        <h2>${{this.balance.GananciaVital | number:'1.2-2'}}</h2>
+        <button class="btn btn-sm btn-primary" (click)="CerrarCarga()"> Cerrar Carga </button>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+
+
+</div>

@@ -1,0 +1,99 @@
+<div class="overlay" *ngIf="isVisible">
+
+  <div class="containerForm" style="background-color: white; width: 300px; height: 400px; display: flex; align-content: center; flex-direction: column; align-items: center; justify-content: center; ">
+
+    <h4>Editar Cliente</h4>
+    <!--<button (click)="showNotification('AA')">Mostrar notificación</button>-->
+
+
+    <div>
+
+      <div class="formulario" style="display:flex!important; flex-wrap:wrap!important;   ">
+        <form (submit)="editarCliente(nuevoCliente.id, nuevoCliente)" class="form-group form">
+
+          <div>
+            <label for="nombre">Nombre:</label>
+            <input type="text" [(ngModel)]="nuevoCliente.nombre" placeholder={{nuevoCliente.nombre}} [ngModelOptions]="{standalone: true}">
+          </div>
+
+          <div>
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="direccion" [(ngModel)]="nuevoCliente.Direccion" placeholder={{nuevoCliente.Direccion}} [ngModelOptions]="{standalone: true}">
+          </div>
+
+          <div>
+            <label for="ciudad">Ciudad:</label>
+            <input type="text" id="ciudad" name="ciudad" [(ngModel)]="nuevoCliente.Ciudad" required>
+          </div>
+
+          <div>
+            <label for="provincia">Provincia:</label>
+            <input type="text" id="provincia" name="provincia" [(ngModel)]="nuevoCliente.Provincia" required>
+          </div>
+
+          <!--<div>
+    <label for="deuda">Deuda:</label>
+    <input type="text" id="deuda" name="deuda" [(ngModel)]="nuevoCliente.Deuda">
+  </div>-->
+
+          <div>
+            <label for="numeroDeCliente">Nro. Cliente:</label>
+            <input type="text" id="numeroDeCliente" name="numeroDeCliente" [(ngModel)]="nuevoCliente.NumeroDeCliente">
+          </div>
+
+          <div>
+            <label for="cuit">Cuit:</label>
+            <input type="text" id="cuit" name="cuit" [(ngModel)]="nuevoCliente.Cuit">
+          </div>
+
+          <!--<div>
+    <label for="saldo">Saldo:</label>
+    <input type="text" id="saldo" name="saldo" [(ngModel)]="nuevoCliente.Saldo">
+  </div>-->
+
+          <div>
+            <label for="telefono">Teléfono:</label>
+            <input type="text" id="telefono" name="telefono" [(ngModel)]="nuevoCliente.Telefono">
+          </div>
+
+          <div>
+            <label for="mail">Mail:</label>
+            <input type="email" id="mail" name="mail" [(ngModel)]="nuevoCliente.Mail">
+          </div>
+
+          <!--<div>
+    <label for="flete">Flete:</label>
+    <input type="text" id="flete" name="flete" [(ngModel)]="nuevoCliente.Flete">
+  </div>-->
+          <!--<div>
+    <label for="idvendedor">ID Vendedor:</label>
+    <input type="number" id="idvendedor" name="idvendedor" [(ngModel)]="nuevoCliente.Idvendedor">
+  </div>-->
+          <div style="display:block;width:200px; margin-bottom:20px;">
+
+            <label>Camionero:</label>
+            <select (blur)="camioneroselectChange($event)">
+              <option *ngFor="let camionero of camioneros" [value]="camionero.Id" [attr.data-nombre]="camionero.Nombre">
+                {{ camionero.Id }} - {{ camionero.Nombre }}
+              </option>
+            </select>
+            <br />
+          </div>
+
+          <br />
+
+          <div>
+            <label for="telefono">Vendedor:</label>
+            <select (blur)="vendedorselectChange($event)">
+              <option *ngFor="let vendedor of vendedores" [value]="vendedor.id" [attr.data-nombre]="vendedor.nombre">
+                {{ vendedor.id }} - {{ vendedor.nombre }}
+              </option>
+            </select>
+          </div>
+
+        </form>
+        <button type="submit" class="btn btn-primary  " style="width:200px; height:50px; margin:0 auto; margin-top:10px;" (click)="editarCliente(nuevoCliente.id, nuevoCliente)">Editar Cliente</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,74 @@
+.main-container {
+  height: 100%;
+ 
+  display: flex;
+   
+  background-color: #FAFAFA;
+  width: 120% !important;
+  padding-right: 280px;
+  
+}
+
+.nav {
+ 
+width:200px;
+}
+.sidebar {
+    display:flex;
+     width: 120px;
+     
+  height:560px !important;
+  transition: transform 0.3s ease-out; /* Agregamos una transición suave */
+ margin-right:130px;
+}
+
+.show {
+  transform: translateX(0); /* Mostrar el sidenav */
+}
+
+.sidebar:not(.show) {
+  transform: translateX(-190px); /* Ocultar el sidenav */
+}
+
+/* Estilo para el botón */
+.toggle-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+ 
+}
+  .toggle-button.menu-open {
+    /* Agrega la cantidad de desplazamiento que desees */
+    /* Por ejemplo, puedes ajustar el valor de 100px según tu diseño */
+    transform: translateX(0px);
+  }
+
+.content-container {
+  display:flex;
+   
+  height:auto;
+  flex: 1; /* Para que ocupe todo el espacio restante */
+   background-color: #FAFAFA;
+  /* Otros estilos del contenido del div si es necesario */
+  transition: transform 0.3s ease; /* Animación suave del movimiento */
+}
+.content-container.pushed {
+  
+  transform: translateX(200px); /* Mueve el div horizontalmente cuando el sidenav está visible */
+}
+.custom-scrollbar {
+ 
+}
+
+  /* Ocultar la barra de desplazamiento en WebKit */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 0.5em;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }

@@ -1,0 +1,235 @@
+<div style="position:relative; text-align:center; left:-20px; margin:30px;">
+  <h2>Principal</h2>
+</div>
+
+
+<div class="cards-container">
+
+
+
+  <!--link para tener los iconos
+  https://www.freepik.com/free-vector/e-commerce-icons_957268.htm#query=seler%20icon&position=5&from_view=search&track=ais-->
+  <div class="flip-card-container">
+    <a class="nav-link" routerLink="/clientes">
+      <div class="flip-card   ">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="../assets/iconos/malls.png" alt="Avatar">
+          </div>
+          <div class="flip-card-back">
+            <h1>Clientes</h1>
+            <p>{{this.cantidades.clientes}}  clientes registrados</p>
+            <p>administrar clientes</p>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="flip-card-container  ">
+    <a class="nav-link" routerLink="/camioneros">
+      <div class="flip-card  ">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="../assets/iconos/truck.png" alt="Avatar">
+          </div>
+          <div class="flip-card-back">
+            <h1>Camioneros</h1>
+            <p>{{this.cantidades.camioneros}}  camioneros registrados</p>
+            <p>administrar camioneros</p>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="flip-card-container  ">
+    <a class="nav-link" routerLink="/vendedores">
+      <div class="flip-card  ">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="../assets/iconos/money.png" alt="Avatar">
+          </div>
+          <div class="flip-card-back">
+            <h1>Vendedores</h1>
+            <p>{{this.cantidades.vendedores}}  vendedores registrados </p>
+            <p>administrar vendedores</p>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="flip-card-container  ">
+    <a class="nav-link" routerLink="/facturas">
+      <div class="flip-card  ">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="../assets/iconos/seler.png" alt="Avatar">
+          </div>
+          <div class="flip-card-back">
+            <h1>Facturas</h1>
+            <p>{{this.cantidades.facturas}} Facturas procesadas</p>
+            <p>administrar facturas</p>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+<br />
+<br />
+
+<div *ngIf="existeAdmin">
+  <!--<h2 style="position:relative; text-align:center; left:-20px;">Datos del admin</h2>
+  <h3>ID:{{ admin.id}}</h3>
+  <h3>ID:{{ admin.nombre}}</h3>
+  <h3>ID:{{ admin.Dni}}</h3>
+  <h3>ID:{{ admin.Direccion}}</h3>
+  <h3>ID:{{ admin.Correo}}</h3>
+  <h3>ID:{{ admin.Saldo}}</h3>
+  <h3>ID:{{ admin.PorcentajeFlete}}</h3>-->
+  <h3 style="position:relative; text-align:center; left:-20px;">Datos del admin</h3>
+  <div *ngIf="!Editar" style="width:60% !important; height:auto; margin-left:20px; position:absolute; top:396px; left:250px;   margin-top:10px;   " >
+
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource">
+
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> Id </th>
+          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef> Nombre </th>
+          <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="Direccion">
+          <th mat-header-cell *matHeaderCellDef> Doreccion </th>
+          <td mat-cell *matCellDef="let element"> {{element.Direccion}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Correo">
+          <th mat-header-cell *matHeaderCellDef> Correo </th>
+          <td mat-cell *matCellDef="let element"> {{element.Correo}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Saldo">
+          <th mat-header-cell *matHeaderCellDef> Saldo </th>
+          <td mat-cell *matCellDef="let element"> {{element.Saldo}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="PorcentajeFlete">
+          <th mat-header-cell *matHeaderCellDef> Porcentaje Flete </th>
+          <td mat-cell *matCellDef="let element"> {{element.PorcentajeFlete}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Editar">
+          <th mat-header-cell *matHeaderCellDef> Editar </th>
+          <td mat-cell *matCellDef="let element">
+            <i class="fas fa-pencil-alt icono-editar" (click)="HabilitaractualizarAdmin()" style="position:relative!important; left:15px;"></i>
+          </td>
+        </ng-container>
+
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <mat-paginator #paginator
+                     [pageSizeOptions]="[5, 10, 20]"
+                     showFirstLastButtons>
+      </mat-paginator>
+    </div>
+  </div>
+
+  <!--<button class="btn btn-primary  " (click)="HabilitaractualizarAdmin()"> Editar admin</button>-->
+
+
+</div>
+
+<div *ngIf="!this.existeAdmin">
+
+  <label>El admin no existe, debe agregar uno por unica vez...</label>
+  
+  <div style="height:100%;">
+    <div class="formulario" style="display:flex!important; flex-wrap:wrap!important;width:300px; height:auto;  ">
+      <form (submit)="agregarAdmin()" class="form-group" style="display: flex; flex-wrap: wrap; width: 300px; height:auto; justify-content: flex-end; align-items: center; margin-right: 10px;   ">
+
+        <div>
+          <label for="nombre">Nombre:</label>
+          <input type="text" id="nombre" name="nombre" [(ngModel)]="admin.nombre" required>
+        </div>
+
+        <div>
+          <label for="PorcentajeFlete">Porcentaje Flete:</label>
+          <input type="number" id="PorcentajeFlete" name="PorcentajeFlete" [(ngModel)]="admin.PorcentajeFlete">
+        </div>
+
+        <div>
+          <label for="direccion">Dirección:</label>
+          <input type="text" id="direccion" name="direccion" [(ngModel)]="admin.Direccion" required>
+        </div>
+
+
+        <div>
+          <label for="dni">Dni:</label>
+          <input type="text" id="dni" name="dni" [(ngModel)]="admin.Dni">
+        </div>
+
+        <div>
+          <label for="mail">Mail:</label>
+          <input type="email" id="mail" name="mail" [(ngModel)]="admin.Correo">
+        </div>
+
+      </form>
+      <button type="submit" class="btn btn-primary  " style="width:200px; height:50px; margin:0 auto; margin-top:10px;" (click)="agregarAdmin()">Agregar Admin</button>
+    </div>
+
+  </div>
+</div>
+
+
+<div *ngIf="this.Editar">
+
+   
+   
+  <div style="height:100%;">
+    <div class="formulario" style="display:flex!important; flex-wrap:wrap!important;width:300px; height:auto;  ">
+      <form (submit)="agregarAdmin()" class="form-group" style="display: flex; flex-wrap: wrap; width: 300px; height:auto; justify-content: flex-end; align-items: center; margin-right: 10px;   ">
+
+        <div>
+          <label for="nombre">Nombre:</label>
+          <input type="text" id="nombre" name="nombre" [(ngModel)]="admin.nombre" required>
+        </div>
+
+        <div>
+          <label for="PorcentajeFlete">Porcentaje Flete:</label>
+          <input type="number" id="PorcentajeFlete" name="PorcentajeFlete" [(ngModel)]="admin.PorcentajeFlete">
+        </div>
+
+        <div>
+          <label for="direccion">Dirección:</label>
+          <input type="text" id="direccion" name="direccion" [(ngModel)]="admin.Direccion" required>
+        </div>
+
+
+        <div>
+          <label for="dni">Dni:</label>
+          <input type="text" id="dni" name="dni" [(ngModel)]="admin.Dni">
+        </div>
+
+        <div>
+          <label for="mail">Mail:</label>
+          <input type="email" id="mail" name="mail" [(ngModel)]="admin.Correo">
+        </div>
+
+      </form>
+      <button   class="btn btn-primary  " style="width:200px; height:50px; margin:0 auto; margin-top:10px;" (click)="actualizarAdmin(admin)">Actualizar Admin</button>
+    </div>
+
+  </div>
+</div>
+
+

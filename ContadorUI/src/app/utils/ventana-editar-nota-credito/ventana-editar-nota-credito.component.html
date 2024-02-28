@@ -1,0 +1,33 @@
+<div class="overlay"*ngIf="isVisible">
+
+  <div class="containerForm" style="background-color: white; width: 300px; height: 400px; display: flex; align-content: center; flex-direction: column; align-items: center; justify-content: center; ">
+
+    <h4>Editar Nota de credito</h4>
+    <!--<button (click)="showNotification('AA')">Mostrar notificación</button>-->
+
+    <div>
+      <div class="formulario" style="display:flex!important; flex-wrap:wrap!important;   ">
+        <form (submit)="editarNota(nuevaNota)" class="form-group form">
+          <div>
+            <label for="nombre">Cliente id:</label>
+            <input type="number" [(ngModel)]="nuevaNota.cliId" placeholder={{nuevaNota.cliId}} [ngModelOptions]="{standalone: true}">
+          </div>
+
+          <div>
+            <label for="descripcion">Descripción:</label>
+            <input type="text" id="direccion" [(ngModel)]="nuevaNota.descripcion" placeholder={{nuevaNota.descripcion}} [ngModelOptions]="{standalone: true}">
+          </div>
+
+          <div>
+            <label for="monto">Monto:</label>
+            <input type="number" id="monto" name="monto" [(ngModel)]="nuevaNota.monto" required placeholder={{nuevaNota.monto}}>
+          </div>
+        </form>
+        <button class="btn btn-primary  " style="width:200px; height:50px; margin:0 auto; margin-top:10px;" (click)="editarNota(nuevaNota)">Editar Nota</button>
+        <button class="btn btn-dangger  " style="width:200px; height:50px; margin:0 auto; margin-top:10px;" (click)="cancelar()">Cancelar</button>
+
+      
+      </div>
+    </div>
+  </div>
+</div>

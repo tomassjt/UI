@@ -1,0 +1,173 @@
+<h4>Agregar Cliente</h4>
+<!--<button (click)="showNotification('AA')">Mostrar notificación</button>-->
+ 
+
+<div style="height:100%;">
+  <div class="formulario" style="display:flex!important; flex-wrap:wrap!important;width:300px; height:auto;  ">
+    <form (submit)="agregarCliente()" class="form-group" style="display: flex; flex-wrap: wrap; width: 300px; height:auto; justify-content: flex-end; align-items: center; margin-right: 10px;   ">
+
+      <div>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" [(ngModel)]="nuevoCliente.nombre" required>
+      </div>
+
+      <div>
+        <label for="direccion">Dirección:</label>
+        <input type="text" id="direccion" name="direccion" [(ngModel)]="nuevoCliente.Direccion" required>
+      </div>
+
+      <div>
+        <label for="ciudad">Ciudad:</label>
+        <input type="text" id="ciudad" name="ciudad" [(ngModel)]="nuevoCliente.Ciudad" required>
+      </div>
+
+      <div>
+        <label for="provincia">Provincia:</label>
+        <input type="text" id="provincia" name="provincia" [(ngModel)]="nuevoCliente.Provincia" required>
+      </div>
+
+      <!--<div>
+    <label for="deuda">Deuda:</label>
+    <input type="text" id="deuda" name="deuda" [(ngModel)]="nuevoCliente.Deuda">
+  </div>-->
+
+      <div>
+        <label for="numeroDeCliente">Nro. Cliente:</label>
+        <input type="text" id="numeroDeCliente" name="numeroDeCliente" [(ngModel)]="nuevoCliente.NumeroDeCliente">
+      </div>
+
+      <div>
+        <label for="cuit">Cuit:</label>
+        <input type="text" id="cuit" name="cuit" [(ngModel)]="nuevoCliente.Cuit">
+      </div>
+
+      <!--<div>
+    <label for="saldo">Saldo:</label>
+    <input type="text" id="saldo" name="saldo" [(ngModel)]="nuevoCliente.Saldo">
+  </div>-->
+
+      <div style="display:block;width:200px; margin-bottom:20px;">
+         
+        <label>Camionero:</label>
+        <select (blur)="camioneroselectChange($event)">
+          <option *ngFor="let camionero of camioneros" [value]="camionero.Id" [attr.data-nombre]="camionero.Nombre">
+            {{ camionero.Id }} - {{ camionero.Nombre }}
+          </option>
+        </select>
+        <br />
+      </div>
+
+      <br />
+
+      <div>
+        <label for="telefono">Vendedor:</label>
+        <select (blur)="vendedorselectChange($event)">
+          <option *ngFor="let vendedor of vendedores" [value]="vendedor.id" [attr.data-nombre]="vendedor.nombre">
+            {{ vendedor.id }} - {{ vendedor.nombre }}
+          </option>
+        </select>
+     </div>
+ 
+
+      <div>
+        <label for="telefono">Teléfono:</label>
+        <input type="text" id="telefono" name="telefono" [(ngModel)]="nuevoCliente.Telefono">
+      </div>
+
+      <div>
+        <label for="mail">Mail:</label>
+        <input type="email" id="mail" name="mail" [(ngModel)]="nuevoCliente.Mail">
+      </div>
+
+      <!--<div>
+    <label for="flete">Flete:</label>
+    <input type="text" id="flete" name="flete" [(ngModel)]="nuevoCliente.Flete">
+  </div>-->
+      <!--<div>
+    <label for="idvendedor">ID Vendedor:</label>
+    <input type="number" id="idvendedor" name="idvendedor" [(ngModel)]="nuevoCliente.Idvendedor">
+  </div>-->
+
+
+    </form>
+    <button type="submit" class="btn btn-primary  " style="width:200px; height:50px; margin:0 auto; margin-top:10px;" (click)="agregarCliente()">Agregar Cliente</button>
+  </div>
+
+  <div style="width:100% !important; height:auto; margin-left:20px; position:relative; top:-506px; left:300px;   margin-top:10px;   " *ngIf="this.existenClientes" >
+
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource">
+
+        <!--<ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> Id </th>
+          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>-->
+
+        <ng-container matColumnDef="numero">
+          <th mat-header-cell *matHeaderCellDef> Nro Cliente </th>
+          <td mat-cell *matCellDef="let element"> {{element.NumeroDeCliente}} </td>
+        </ng-container>
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef> Nombre </th>
+          <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="ciudad">
+          <th mat-header-cell *matHeaderCellDef> Ciudad </th>
+          <td mat-cell *matCellDef="let element"> {{element.Ciudad}} </td>
+        </ng-container>
+
+
+
+        <ng-container matColumnDef="direccion">
+          <th mat-header-cell *matHeaderCellDef> Direccion </th>
+          <td mat-cell *matCellDef="let element"> {{element.Direccion}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="vendedor">
+          <th mat-header-cell *matHeaderCellDef> Vendedor </th>
+          <td mat-cell *matCellDef="let element"> {{element.vendedorid}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="camionero">
+          <th mat-header-cell *matHeaderCellDef> Camionero </th>
+          <td mat-cell *matCellDef="let element"> {{element.camioneroid}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Editar">
+          <th mat-header-cell *matHeaderCellDef> Editar </th>
+          <td mat-cell *matCellDef="let element">
+            <i class="fas fa-pencil-alt icono-editar" (click)="editarCliente(element)" style="position:relative!important; left:15px;"></i>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Eliminar">
+          <th mat-header-cell *matHeaderCellDef> Eliminar</th>
+          <td mat-cell *matCellDef="let element">
+            <i class="fas fa-trash-alt icono-eliminar" (click)="eliminarCliente(element.id)" style="position:relative!important; left:20px;"></i>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      
+      <mat-paginator #paginator
+                     [pageSizeOptions]="[5, 10, 20]"
+                     showFirstLastButtons
+                    
+                      >
+      </mat-paginator>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+

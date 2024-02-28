@@ -1,0 +1,21 @@
+<div #divToExport class="balance">
+  <h3>Calcular Balance</h3>
+  <button class="btn btn-primary" (click)="calcularBalance()">Calcular Balance</button>
+  <label>{{subtotal}}</label>
+  <br />
+  <br />
+
+  <h3>Calcular Deudas</h3>
+  <button class="btn btn-primary" (click)="calcularDeudas()">Calcular Deudas</button>
+  <label>{{deuda}}</label>
+  <h3>Deudas</h3>
+  <p>Clientes que deben</p>
+  <button class="btn btn-primary" (click)="calcularDeudores()">Quienes deben</button>
+
+  <h4>Balance</h4>
+  <h5>Facturas por entregar: {{this.balance.cantidadDeFacturasPorEntregar}} </h5>
+  <h5>Facturas entregadas: {{this.balance.cantidadDeFacturasEntregadas}} </h5>
+  <h5>Ganancias: {{this.balance.ganancias}} </h5>
+  <h5>Por Cobrar: {{this.balance.porCobrar}} </h5>
+</div>
+<button (click)="exportToPdf()"> Guardar Comprobante en PDF </button>

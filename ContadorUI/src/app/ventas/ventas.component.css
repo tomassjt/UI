@@ -1,0 +1,146 @@
+.formulario {
+  align-content: end;
+  text-align: right;
+}
+
+.formulario2 {
+  height: auto;
+  align-content: end;
+  text-align: right;
+}
+
+  .formulario2 input {
+    text-align: right;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    border: none;
+  }
+
+select {
+  margin: 10px;
+  border: none;
+  background: #FAFAFA;
+  font-size: 15px;
+  align-content: end;
+  text-align: right;
+  width: 130px;
+  border-radius: 5px;
+}
+
+.formulario input {
+  text-align: right;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  border: none;
+}
+
+.form-group.text-right {
+  text-align: right;
+}
+
+.btnAgregar {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.icono-eliminar {
+  transform-origin: center;
+  transition: 1s;
+  width: 10px;
+  height: 10px;
+  will-change: transform;
+}
+
+  .icono-eliminar:hover {
+    will-change: transform;
+    transition: 0.3s;
+    width: 20px;
+    height: 30px;
+    color: red;
+  }
+
+.icono-editar, .icono-imprimir {
+  transform-origin: center;
+  transition: 1s;
+  width: 10px;
+  height: 10px;
+  will-change: transform;
+}
+
+  .icono-editar:hover, .icono-imprimir:hover {
+    will-change: transform;
+    transition: 0.3s;
+    width: 20px;
+    height: 30px;
+    color: lawngreen;
+  }
+
+.custom-scrollbar {
+}
+
+  /* Ocultar la barra de desplazamiento en WebKit */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 0.5em;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+
+.columna-Fecha {
+  width: 45px !important;
+  font-size: 8px; /* Ajusta el tamaño de la fuente según tus necesidades */
+}
+
+.columna-id {
+  font-size: 12px;
+  width: 30px !important;
+  margin: 0px !important;
+  gap: 0px !important;
+  margin: 0px, 0px;
+  max-width: 25px;
+}
+
+.columna {
+  max-width:200px;
+  width: 100px;
+  margin-right:5px;
+  margin-left:5px;
+  font-size:12px;
+}
+.filtroAbierto {
+  transition: 1.3s;
+  height: auto;
+   opacity:1;
+}
+
+.filtroCerrado {
+ transition:0.3s;
+ opacity:0;
+ height:0px;
+}
+ .iconoDeFiltro{
+     color:blue;
+     position:relative;
+     transition:0.3s;
+     transform:rotate(0deg);
+
+ }
+
+.iconoDeFiltro:hover {
+  transition: 0.3s;
+  color:#333;
+  transform: rotate(90deg);
+}
+
+
+.rotated {
+  transition: 0.3s;
+  transform: rotate(90deg);
+}

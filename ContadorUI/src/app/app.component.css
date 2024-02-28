@@ -1,0 +1,53 @@
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+  .custom-scrollbar
+
+{
+  height: 105vh;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+/* Ocultar la barra de desplazamiento en WebKit */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+.tiempo  
+{
+  position: fixed;
+  top: 4px;
+  right: 10px;
+   padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  /*box-shadow: 0 0 10px rgba(11, 0, 0, 0.1);*/
+  color: white;
+  border:none;
+  
+}
+  .tiempo i {
+    margin: 5px;
+  }
+
+.rotate {
+  animation: rotate 60s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

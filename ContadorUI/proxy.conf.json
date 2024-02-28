@@ -1,0 +1,8 @@
+{
+  "/": {
+    "target": "http://tomasstome-001-site1.itempurl.com",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

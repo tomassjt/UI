@@ -1,0 +1,44 @@
+<div class="main-container" style="width:30px; " >
+  <nav class="bg-light sidebar" [ngClass]="{ 'show': isSideNavVisible }">
+    <div class="position-sticky" style="width:110px;">
+      <button style="position:relative; left:200px; z-index:300;" (click)="toggleSideNav()" class="btn btn-primary toggle-button" [ngClass]="{ 'show': isSideNavVisible }">
+        <i class="fa fa-bars"></i> <!-- Icono de FontAwesome -->
+      </button>
+      <ul class="nav flex-column" style="width:100px;">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/">Panel Principal</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/clientes">Clientes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/vendedores">Vendedores</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/camioneros">Camioneros</a>
+        </li>
+        <!--<li class="nav-item">
+          <a class="nav-link" routerLink="/ventas">Cargas</a>
+        </li>-->
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/facturas">Facturas</a>
+        </li>
+        <!--<li class="nav-item">
+          <a class="nav-link" routerLink="/balance">Balance</a>
+        </li>-->
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/pago-vital">Pago a vital</a>
+        </li>
+        <!-- Agrega más enlaces si es necesario -->
+      </ul>
+    </div>
+  </nav>
+  <div class="content-container custom-scrollbar" style="position:relative;  height:auto; padding-bottom:300px; padding-top: 10px; margin-bottom:150px;   right: 180px;  " [ngClass]="{ 'pushed': isSideNavVisible }">
+    <!-- Contenido del div que se empujará por el sidenav -->
+    <router-outlet></router-outlet>
+
+  </div>
+
+</div>
+
+

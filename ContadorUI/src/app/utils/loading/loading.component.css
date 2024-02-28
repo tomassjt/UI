@@ -1,0 +1,86 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Fondo oscuro con opacidad */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction:column;
+}
+
+
+@keyframes caida1 {
+  0% {
+    transform: translateY(0); /* Comienza arriba */
+  }
+
+  50% {
+    transform: translateY(5px); /* Mitad de la animación, posición baja */
+  }
+
+  100% {
+    transform: translateY(0); /* Termina arriba */
+  }
+}
+
+@keyframes caida2 {
+  10% {
+    transform: translateY(0); /* Comienza arriba */
+  }
+
+  60% {
+    transform: translateY(5px); /* Mitad de la animación, posición baja */
+  }
+
+  100% {
+    transform: translateY(0); /* Termina arriba */
+  }
+}
+
+@keyframes caida3 {
+  20% {
+    transform: translateY(0); /* Comienza arriba */
+  }
+
+  70% {
+    transform: translateY(5px); /* Mitad de la animación, posición baja */
+  }
+
+  100% {
+    transform: translateY(0); /* Termina arriba */
+  }
+}
+
+
+
+
+
+.gotita1 {
+  width: 5px;
+  height: 5px;
+  background-color: antiquewhite; /* Cambia el color según tus preferencias */
+  border-radius: 50%; /* Crea una forma de círculo */
+  animation: caida1 1s infinite; /* La animación dura 1 segundo y se repite infinitamente */
+}
+
+.gotita2 {
+  width: 5px;
+  height: 5px;
+  background-color: antiquewhite; /* Cambia el color según tus preferencias */
+  border-radius: 50%; /* Crea una forma de círculo */
+  animation: caida2 1s infinite; /* La animación dura 1 segundo y se repite infinitamente */
+}
+
+.gotita3 {
+  width: 5px;
+  height: 5px;
+  background-color: antiquewhite; /* Cambia el color según tus preferencias */
+  border-radius: 50%; /* Crea una forma de círculo */
+  animation: caida3 1s infinite; /* La animación dura 1 segundo y se repite infinitamente */
+}
+.gotita1 , .gotita2,.gotita3{
+    margin:5px;
+}

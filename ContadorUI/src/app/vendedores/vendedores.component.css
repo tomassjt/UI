@@ -1,0 +1,53 @@
+.formulario {
+  align-content: end;
+  text-align: right;
+}
+
+  .formulario input {
+    text-align: right;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    border: none;
+  }
+
+.form-group.text-right {
+  text-align: right;
+}
+
+.btnAgregar {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.icono-eliminar {
+  transform-origin: center;
+  transition: 1s;
+  width: 10px;
+  height: 10px;
+  will-change: transform;
+}
+
+  .icono-eliminar:hover {
+    will-change: transform;
+    transition: 0.3s;
+    width: 20px;
+    height: 30px;
+    color: red;
+  }
+
+.icono-editar {
+  transform-origin: center;
+  transition: 1s;
+  width: 10px;
+  height: 10px;
+  will-change: transform;
+}
+
+  .icono-editar:hover {
+    will-change: transform;
+    transition: 0.3s;
+    width: 20px;
+    height: 30px;
+    color: lawngreen;
+  }

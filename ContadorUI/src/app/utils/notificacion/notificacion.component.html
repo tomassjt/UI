@@ -1,0 +1,27 @@
+<div *ngIf="isVisible" class="overlay" style=" height: auto; ">
+
+  <div class="mat-elevation-z8 notification" style="width: 850px; height: auto; background-color:white; ">
+
+    <div style="width: 800px; height: auto;   "  #divToExport>
+
+      <p style="text-align:center; " [innerHTML]="titulo">{{titulo}}</p>
+      <p style="text-align: center; font-size:12px; width: auto; height: auto; " [innerHTML]="message">
+        {{ message }}
+      </p>
+      <br />
+      <br />
+
+
+    </div>
+    <div style=" display:flex; justify-content:center; align-content:center; align-items:center; gap:10px;">
+      <button class="btn btn-primary btn-sm" style="width:120px;" (click)="open()">Aceptar</button>
+      <button class="btn btn-danger btn-sm" style="width:120px;" (click)="close()">Cancelar</button>
+    </div>
+    <br />
+    <div  *ngIf="botonPdf"  style=" display:flex; justify-content:center; align-content:center; align-items:center; gap:10px;">
+      <button class="btn btn-primary btn-sm" (click)="exportToPdf()"> Guardar PDF </button>
+    </div>
+  </div>
+  
+
+</div>

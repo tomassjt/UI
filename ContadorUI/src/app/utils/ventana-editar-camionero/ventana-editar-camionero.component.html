@@ -1,0 +1,57 @@
+<div class="overlay" *ngIf="isVisible">
+
+  <div class="containerForm" style="background-color: white; width: 300px; height: 400px; display: flex; align-content: center; flex-direction: column; align-items: center; justify-content: center; ">
+
+    <h4>Editar Camionero</h4>
+    <!--<button (click)="showNotification('AA')">Mostrar notificación</button>-->
+
+
+    <div>
+
+      <div class="formulario" style="display:flex!important; flex-wrap:wrap!important;   ">
+        <form (submit)="editarCamionero(nuevoCamionero.Id, nuevoCamionero)" class="form-group form">
+
+          <div>
+            <label for="nombre">Nombre:</label>
+            <input type="text" [(ngModel)]="nuevoCamionero.Nombre" placeholder={{nuevoCamionero.Nombre}} [ngModelOptions]="{standalone: true}">
+          </div>
+
+          <div>
+            <label for="nombre">Telefono:</label>
+            <input type="text" [(ngModel)]="nuevoCamionero.Telefono" placeholder={{nuevoCamionero.Telefono}} [ngModelOptions]="{standalone: true}">
+          </div>
+
+          <div>
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="direccion" [(ngModel)]="nuevoCamionero.Direcicon" placeholder={{nuevoCamionero.Direcicon}} [ngModelOptions]="{standalone: true}">
+          </div>
+
+
+          <!--<div>
+    <label for="numeroDeCliente">Nro. Camionero:</label>
+    <input type="text" id="numeroDeCliente" name="numeroDeCliente" [(ngModel)]="nuevoCliente.NumeroDeCliente">
+  </div>-->
+          <!--<div>
+    <label for="telefono">Teléfono:</label>
+    <input type="text" id="telefono" name="telefono" [(ngModel)]="nuevoCamionero.Telefono">
+  </div>-->
+          <!--<div>
+    <label for="mail">Mail:</label>
+    <input type="email" id="mail" name="mail" [(ngModel)]="nuevoCliente.Mail">
+  </div>-->
+          <div>
+    <label for="flete">Porcentaje Flete:</label>
+    <input type="text" id="flete" name="flete" [(ngModel)]="nuevoCamionero.PorcentajeFlete">
+  </div>
+          <!--<div>
+    <label for="idcamionero">ID Camionero:</label>
+    <input type="number" id="idcamionero" name="idcamionero" [(ngModel)]="nuevoCamionero.Idcamionero">
+  </div>-->
+
+
+        </form>
+        <button type="submit" class="btn btn-primary  " style="width:200px; height:50px; margin:0 auto; margin-top:10px;" (click)="editarCamionero(nuevoCamionero.Id, nuevoCamionero)">Editar Camionero</button>
+      </div>
+    </div>
+  </div>
+</div>
